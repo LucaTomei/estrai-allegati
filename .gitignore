@@ -1,0 +1,12 @@
+# Build output (rigenerabile con src/build_app.sh; il DMG va nelle GitHub Releases)
+Estrai Allegati.app/
+*.dmg
+# Documenti di prova (contengono dati aziendali)
+*.docx
+*.doc
+*.xlsx
+*.pptx
+# macOS / editor
+.DS_Store
+.build/
+.swiftpm/
