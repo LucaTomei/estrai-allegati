@@ -1,10 +1,10 @@
 #!/bin/bash
-# Ricostruisce "Estrai Allegati.app" e "Estrai Allegati.dmg" nella cartella superiore.
+# Ricostruisce "Estrai Allegati.app" e "Estrai-Allegati.dmg" nella cartella superiore.
 set -e
 cd "$(dirname "$0")"
 OUT="$(cd .. && pwd)"
 APP="$OUT/Estrai Allegati.app"
-DMG="$OUT/Estrai Allegati.dmg"
+DMG="$OUT/Estrai-Allegati.dmg"
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 

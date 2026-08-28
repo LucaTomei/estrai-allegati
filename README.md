@@ -27,7 +27,7 @@ gli allegati con nome ed estensione originali, direttamente sul Mac.
 
 ## Installazione
 
-1. Scarica `Estrai Allegati.dmg` dall'ultima [release](../../releases/latest).
+1. Scarica `Estrai-Allegati.dmg` dall'ultima [release](../../releases/latest).
 2. Trascina l'app in **Applicazioni**.
 3. Primo avvio: l'app non è notarizzata → tasto destro → **Apri** → **Apri**
    (su macOS 15+: *Impostazioni di Sistema → Privacy e sicurezza → Apri comunque*).
@@ -70,7 +70,7 @@ Tutto in Swift, senza librerie esterne:
 Richiede Xcode (per `swiftc`).
 
 ```bash
-src/build_app.sh          # → Estrai Allegati.app (universale arm64 + x86_64) e Estrai Allegati.dmg
+src/build_app.sh          # → Estrai Allegati.app (universale arm64 + x86_64) e Estrai-Allegati.dmg
 ```
 
 ## Release
