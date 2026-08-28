@@ -37,9 +37,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           TAG="${GITHUB_REF_NAME}"
-          NOTES="App universale (Apple Silicon + Intel), non notarizzata: al primo avvio tasto destro → **Apri**.
-
-Scarica \`Estrai Allegati.dmg\`, trascina l'app in Applicazioni."
+          NOTES=$'App universale (Apple Silicon + Intel), non notarizzata: al primo avvio tasto destro → **Apri**.\n\nScarica `Estrai Allegati.dmg` e trascina l\'app in Applicazioni.'
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" "Estrai Allegati.dmg" --clobber
           else
