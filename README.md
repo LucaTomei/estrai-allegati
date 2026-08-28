@@ -13,6 +13,7 @@
   <a href="../../releases/latest"><img src="https://img.shields.io/github/v/release/LucaTomei/estrai-allegati?label=download&color=0a84ff" alt="Release"></a>
   <img src="https://img.shields.io/badge/macOS-12%2B-lightgrey?logo=apple" alt="macOS 12+">
   <img src="https://img.shields.io/badge/Swift-SwiftUI-orange?logo=swift" alt="Swift">
+  <a href="../../actions/workflows/release.yml"><img src="https://github.com/LucaTomei/estrai-allegati/actions/workflows/release.yml/badge.svg" alt="Build"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT"></a>
 </p>
 
@@ -70,7 +71,15 @@ Richiede Xcode (per `swiftc`).
 
 ```bash
 src/build_app.sh          # → Estrai Allegati.app (universale arm64 + x86_64) e Estrai Allegati.dmg
-src/publish.sh v1.0.0     # push + GitHub Release con il DMG (richiede gh autenticato)
+```
+
+## Release
+
+Le release sono automatiche: al push di un tag `vX.Y.Z` GitHub Actions compila l'app su un runner macOS
+e pubblica il DMG.
+
+```bash
+src/publish.sh v1.1.0     # crea il tag, lo pusha e avvia la release
 ```
 
 ## Licenza

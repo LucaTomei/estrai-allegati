@@ -1,0 +1,47 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build app (universal) & DMG
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: src/build_app.sh
+
+      - name: Verify bundle
+        run: |
+          lipo -info "Estrai Allegati.app/Contents/MacOS/EstraiAllegati"
+          plutil -lint "Estrai Allegati.app/Contents/Info.plist"
+          hdiutil verify "Estrai Allegati.dmg"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Estrai-Allegati-dmg
+          path: Estrai Allegati.dmg
+
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          NOTES="App universale (Apple Silicon + Intel), non notarizzata: al primo avvio tasto destro → **Apri**.
+
+Scarica \`Estrai Allegati.dmg\`, trascina l'app in Applicazioni."
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "Estrai Allegati.dmg" --clobber
+          else
+            gh release create "$TAG" "Estrai Allegati.dmg" --title "Estrai Allegati $TAG" --notes "$NOTES"
+          fi
